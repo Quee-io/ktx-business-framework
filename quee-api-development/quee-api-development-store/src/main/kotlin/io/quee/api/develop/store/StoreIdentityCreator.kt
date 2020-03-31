@@ -9,4 +9,5 @@ import java.io.Serializable
  * Created At **Fri Feb, 2020**
  */
 interface StoreIdentityCreator<ID : Serializable, I : Identity<ID>> : Creator<I> {
+    fun ID.uuid(): StoreIdentityCreator<ID, I>
 }

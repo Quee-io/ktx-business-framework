@@ -9,9 +9,9 @@ import java.io.Serializable
  * Created At **Fri Feb, 2020**
  */
 interface StoreQuery<ID : Serializable, I : Identity<ID>> {
-    fun find(uuid: String): I?
-    fun exist(uuid: String): Boolean
+    fun find(uuid: ID): I?
+    fun exist(uuid: ID): Boolean
     fun all(): List<I>
     fun all(page: Int, size: Int): PageData<I>
-    fun allByUuids(uuids: List<String>): Iterable<I>
+    fun allByUuids(uuids: List<ID>): Iterable<I>
 }

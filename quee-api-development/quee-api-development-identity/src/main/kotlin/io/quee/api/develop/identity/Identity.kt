@@ -8,6 +8,6 @@ import java.time.LocalDateTime
  * Created At **Sat Aug, 2019**
  */
 interface Identity<ID : Serializable> : Serializable {
-    val uuid: ID
+    val uuid: ID?
     val creationDate: LocalDateTime
 }

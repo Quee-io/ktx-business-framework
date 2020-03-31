@@ -10,6 +10,8 @@ import java.io.Serializable
 interface Store<ID : Serializable, I : Identity<ID>> {
     fun I.save(): I
     fun List<I>.save(): Iterable<I>
+    fun ID.delete()
+    fun I.delete()
     val storeQuery: StoreQuery<ID, I>
     fun identityCreator(): StoreIdentityCreator<ID, I>
     fun I.identityUpdater(): StoreIdentityUpdater<ID, I>

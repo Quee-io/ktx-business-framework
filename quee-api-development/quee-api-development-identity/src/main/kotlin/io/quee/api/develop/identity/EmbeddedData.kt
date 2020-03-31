@@ -1,4 +1,4 @@
-package io.quee.api.develop.shared.model
+package io.quee.api.develop.identity
 
 import java.io.Serializable
 

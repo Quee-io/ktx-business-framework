@@ -7,7 +7,7 @@
     <groupId>io.quee.api.parent</groupId>
     <artifactId>quee-api-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.5-RELEASE</version>
+    <version>1.0.6.0-RELEASE</version>
     <modules>
         <module>quee-api-development</module>
         <module>quee-api-dependencies</module>

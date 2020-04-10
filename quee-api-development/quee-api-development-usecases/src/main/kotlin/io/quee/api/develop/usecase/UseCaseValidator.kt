@@ -1,8 +1,6 @@
 package io.quee.api.develop.usecase
 
 import io.quee.api.develop.shared.error.Error
-import java.util.stream.Collectors
-import java.util.stream.StreamSupport
 import javax.validation.ConstraintViolation
 import javax.validation.Validation
 import javax.validation.Validator as JavaXValidator
@@ -13,12 +11,11 @@ import javax.validation.Validator as JavaXValidator
  */
 class UseCaseValidator<T> private constructor() {
     private val validator: JavaXValidator = Validation.buildDefaultValidatorFactory().validator
-    fun validate(item: T) {
-        val violations = validator.validate(item)
-        if (violations.size > 0) {
-            val errors: List<Error> = violations.stream()
-                    .map { violation: ConstraintViolation<T> -> createErrorMessage(violation) }
-                    .collect(Collectors.toList())
+    fun T.validate() {
+        val violations = validator.validate(this)
+        if (violations.isNotEmpty()) {
+            val errors: List<Error> = violations
+                    .map { createErrorMessage(it) }
             throw UseCaseException(errors)
         }
     }
@@ -26,8 +23,7 @@ class UseCaseValidator<T> private constructor() {
     private fun createErrorMessage(violation: ConstraintViolation<T>): Error {
         val propertyPath = violation.propertyPath
         val message = violation.message
-        val nodes = StreamSupport.stream(propertyPath.spliterator(), false)
-                .collect(Collectors.toList())
+        val nodes = propertyPath.toList()
         return if (nodes.isNotEmpty()) {
             Error(nodes[nodes.size - 1].name, message)
         } else Error(message, propertyPath.toString())

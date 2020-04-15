@@ -7,7 +7,7 @@
     <groupId>io.quee.api.parent</groupId>
     <artifactId>quee-api-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.6.1-RELEASE</version>
+    <version>1.0.6.2-RELEASE</version>
     <modules>
         <module>quee-api-development</module>
         <module>quee-api-dependencies</module>
@@ -30,6 +30,16 @@
             <organizationUrl>https://quee.io</organizationUrl>
             <roles>
                 <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Ibrahim AlTamimi</name>
+            <url>https://www.linkedin.com/in/iloom/</url>
+            <email>info@quee.io</email>
+            <organization>QueeIO</organization>
+            <organizationUrl>https://quee.io</organizationUrl>
+            <roles>
+                <role>Maintainer</role>
             </roles>
         </developer>
     </developers>
@@ -55,11 +65,6 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.12</version>
-            </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-reflect</artifactId>

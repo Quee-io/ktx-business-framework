@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.quee.ktx.framework</groupId>
+        <artifactId>ktx-business-framework</artifactId>
+        <version>1.0.7.0-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ktx-business-development</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ktx-business-development-action-usecase</module>
+        <module>ktx-business-development-reactive-usecases</module>
+        <module>ktx-business-development-shared</module>
+        <module>ktx-business-development-store</module>
+        <module>ktx-business-development-usecases</module>
+        <module>ktx-business-development-identity</module>
+    </modules>
+
+</project>

@@ -1,7 +1,7 @@
 package io.quee.ktx.develop.action.usecase.validation
 
 import io.quee.ktx.develop.action.usecase.ActionableFunctionalUseCase
-import io.quee.ktx.develop.usecase.UseCaseValidator
+import io.quee.ktx.develop.action.usecase.func.UseCaseValidator
 import io.quee.ktx.develop.usecase.model.UseCaseRequest
 import io.quee.ktx.develop.usecase.model.UseCaseResponse
 
@@ -12,7 +12,7 @@ import io.quee.ktx.develop.usecase.model.UseCaseResponse
 abstract class ValidationFunctionalUseCase<RQ : UseCaseRequest, RS : UseCaseResponse>
     : ActionableFunctionalUseCase<RQ, RS>() {
     final override fun RQ.before() {
-        UseCaseValidator.newInstance<RQ>().run {
+        UseCaseValidator.run {
             validate()
         }
         extraValidation()

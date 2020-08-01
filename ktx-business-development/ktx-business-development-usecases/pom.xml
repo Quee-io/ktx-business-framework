@@ -5,21 +5,16 @@
     <parent>
         <artifactId>ktx-business-development</artifactId>
         <groupId>io.quee.ktx.framework</groupId>
-        <version>1.0.7.0-RELEASE</version>
+        <version>1.0.8.0-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ktx-business-development-usecases</artifactId>
     <dependencies>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>${project.parent.groupId}</groupId>
             <artifactId>ktx-business-development-shared</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-
     </dependencies>
 </project>

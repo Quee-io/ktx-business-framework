@@ -1,6 +1,7 @@
-package io.quee.ktx.develop.usecase
+package io.quee.ktx.develop.action.usecase.func
 
 import io.quee.ktx.develop.shared.error.Error
+import io.quee.ktx.develop.usecase.UseCaseException
 import javax.validation.ConstraintViolation
 import javax.validation.Validation
 import javax.validation.Validator as JavaXValidator
@@ -9,9 +10,9 @@ import javax.validation.Validator as JavaXValidator
  * Created By [**Ibrahim Al-Tamimi **](https://www.linkedin.com/in/iloom/)<br></br>
  * Created At **Sat Aug, 2019**
  */
-class UseCaseValidator<T> private constructor() {
+object UseCaseValidator {
     private val validator: JavaXValidator = Validation.buildDefaultValidatorFactory().validator
-    fun T.validate() {
+    fun <T> T.validate() {
         val violations = validator.validate(this)
         if (violations.isNotEmpty()) {
             val errors: List<Error> = violations
@@ -20,7 +21,7 @@ class UseCaseValidator<T> private constructor() {
         }
     }
 
-    private fun createErrorMessage(violation: ConstraintViolation<T>): Error {
+    private fun <T> createErrorMessage(violation: ConstraintViolation<T>): Error {
         val propertyPath = violation.propertyPath
         val message = violation.message
         val nodes = propertyPath.toList()
@@ -28,11 +29,4 @@ class UseCaseValidator<T> private constructor() {
             Error(nodes[nodes.size - 1].name, message)
         } else Error(message, propertyPath.toString())
     }
-
-    companion object {
-        fun <T> newInstance(): UseCaseValidator<T> {
-            return UseCaseValidator()
-        }
-    }
-
 }

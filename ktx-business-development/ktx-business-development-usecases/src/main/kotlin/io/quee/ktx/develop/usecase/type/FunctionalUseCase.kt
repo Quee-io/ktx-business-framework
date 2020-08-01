@@ -8,6 +8,6 @@ import io.quee.ktx.develop.usecase.model.UseCaseResponse
  * Created At **Sat Aug, 2019**
  */
 @FunctionalInterface
-interface FunctionalUseCase<RQ : UseCaseRequest, RS : UseCaseResponse> : UseCase<RQ, RS> {
+interface FunctionalUseCase<RQ, RS> where RQ : UseCaseRequest, RS : UseCaseResponse {
     fun RQ.process(): RS
 }

@@ -1,0 +1,184 @@
+{
+  "id": "http://test.quee.io/tests/schema",
+  "$schema": "http://test.quee.io/tests/schema#",
+  "description": "E-Cheque Integration Tests Schema",
+  "type": "object",
+  "required": [
+    "scenarios"
+  ],
+  "properties": {
+    "scenarios": {
+      "type": "array",
+      "description": "All of Test Cases",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/test-scenario"
+      },
+    }
+  },
+  "definitions": {
+    "test-scenario": {
+      "type": "object",
+      "description": "Test Scenario",
+      "required": [
+        "name",
+        "cases"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Scenario name"
+        },
+        "cases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/test-case"
+          },
+          "description": "Test cases"
+        }
+      }
+    },
+    "test-case": {
+      "type": "object",
+      "required": [
+        "mapping",
+        "responseType",
+        "response",
+        "requestType"
+      ],
+      "properties": {
+        "mapping": {
+          "type": "string",
+          "description": "Request API mapping"
+        },
+        "autoHeader": {
+          "type": "boolean",
+          "description": "Auto generate request header, If false you have to pass header object"
+        },
+        "responseType": {
+          type: "string",
+          "enum": [
+            "SUCCESS",
+            "BAD_REQUEST",
+            "NOT_FOUND",
+            "UN_AUTHORIZED",
+            "NOT_ACCEPTABLE"
+          ],
+          "description": "Response Status Type"
+        },
+        "requestType": {
+          "enum": [
+            "PATCH",
+            "POST"
+          ],
+          default: "POST",
+          "description": "Http Response Type"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/header"
+          },
+          "description": "Test case name"
+        },
+        "signature": {
+          "$ref": "#/definitions/signature",
+          "description": "Bank Signature"
+        },
+        "response": {
+          "$ref": "#/definitions/response",
+          "description": "Expected API Response"
+        },
+        "extraResponse": {
+          "$ref": "#/definitions/response",
+          "description": "Optional API Response, In case of API response have multiple behaviors"
+        },
+        "request": {
+          "$ref": "#/definitions/request-body",
+          "description": "API Request body"
+        }
+      }
+    },
+    "header": {
+      "type": "object",
+      "required": [
+        "key"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Header Name"
+        },
+        "value": {
+          "type": "string",
+          "description": "Header Value"
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "properties": {
+        "bankCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Bank code"
+        },
+        "bankSignature": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Band Digital Signature"
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Response code"
+        },
+        "description": {
+          "type": "string",
+          "description": "Response description"
+        }
+      }
+    },
+    "request-body": {
+      "type": "object",
+      "required": [
+        "timestamp"
+      ],
+      "propertyNames": {
+        "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+      },
+      "properties": {
+        "timestamp": {
+          "type": [
+            "string",
+            "null"
+          ],
+          pattern: "now\\(\\)|([-+])([0-9]*)([smh])|^$",
+          "description": "Timestamp"
+        }
+      },
+      "patternProperties": {
+        "^[A-Za-z][A-Za-z0-9]*$": {
+          type: [
+            "null",
+            "array",
+            "boolean",
+            "string",
+            "integer",
+            "number",
+            "object"
+          ],
+          pattern: "(RANDOM\\((NUMBER|CAPS|CHARS|ALL),([0-9]*)\\))|((-+)([0-9]*)([smh]))|(now\\(\\))|(PATH\\(([0-9]*),([[a-z.][A-Z][0-9]]+)\\))|(SELF_REF\\(([[a-z.][A-Z][0-9]]+)\\))|(IBAN\\(([A-Z]{2}+),([A-Z]{4}+),([0-9]+)\\))|(IBAN_REF\\(([A-Z]{2}+),([A-Z]{4}+),([[a-z.][A-Z][0-9]]+)\\))|(\\w+)|($*)"
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,6 @@ import io.quee.ktx.develop.usecase.model.UseCaseRequest
  * Created At **Sat Aug, 2019**
  */
 @FunctionalInterface
-interface CommandUseCase<RQ : UseCaseRequest> {
+interface CommandUseCase<RQ> where RQ : UseCaseRequest {
     fun RQ.execute()
 }

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>ktx-business-framework</artifactId>
         <groupId>io.quee.ktx.framework</groupId>
-        <version>1.0.8.0-RELEASE</version>
+        <version>1.0.9.0-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

@@ -1,6 +1,7 @@
 package io.quee.ktx.develop.action.usecase.validation
 
 import io.quee.ktx.develop.action.usecase.ActionableCommandUseCase
+import io.quee.ktx.develop.action.usecase.func.DefaultUseCaseValidator
 import io.quee.ktx.develop.action.usecase.func.UseCaseValidator
 import io.quee.ktx.develop.usecase.model.UseCaseRequest
 
@@ -8,9 +9,11 @@ import io.quee.ktx.develop.usecase.model.UseCaseRequest
  * Created By [**Ibrahim Al-Tamimi **](https://www.linkedin.com/in/iloom/)<br></br>
  * Created At **07**, **Sat Mar, 2020**
  */
-abstract class ValidationCommandUseCase<RQ : UseCaseRequest> : ActionableCommandUseCase<RQ>() {
+abstract class ValidationCommandUseCase<RQ : UseCaseRequest>(
+        private val validator: UseCaseValidator = DefaultUseCaseValidator.instance
+) : ActionableCommandUseCase<RQ>() {
     final override fun RQ.before() {
-        UseCaseValidator.run {
+        validator.run {
             validate()
         }
         extraValidation()

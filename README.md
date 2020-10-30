@@ -1,2 +1,2 @@
 # ktx business framework.
-- **TODO**: Add documents how to use it. 
+- **DEPRECATED**: Use [ktx-radix](https://github.com/Quee-io/ktx-radix). 

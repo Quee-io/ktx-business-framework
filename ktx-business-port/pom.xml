@@ -5,7 +5,7 @@
     <parent>
         <artifactId>ktx-business-framework</artifactId>
         <groupId>io.quee.ktx.framework</groupId>
-        <version>1.0.9.0-RELEASE</version>
+        <version>1.0.9.1-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ktx-business-port</artifactId>
@@ -15,4 +15,11 @@
     </modules>
 
 
+    <distributionManagement>
+        <relocation>
+            <artifactId>ktx-radix-port</artifactId>
+            <version>v1.0.0-RELEASE</version>
+            <groupId>io.quee.ktx.radix</groupId>
+        </relocation>
+    </distributionManagement>
 </project>

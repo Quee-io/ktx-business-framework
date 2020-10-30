@@ -5,13 +5,19 @@
     <parent>
         <groupId>io.quee.ktx.framework</groupId>
         <artifactId>ktx-business-framework</artifactId>
-        <version>1.0.9.0-RELEASE</version>
+        <version>1.0.9.1-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.quee.ktx.framework.dependencies</groupId>
     <packaging>pom</packaging>
     <artifactId>ktx-business-dependencies</artifactId>
-
+    <distributionManagement>
+        <relocation>
+            <artifactId>ktx-radix-dependencies</artifactId>
+            <version>v1.0.0-RELEASE</version>
+            <groupId>io.quee.ktx.radix</groupId>
+        </relocation>
+    </distributionManagement>
     <dependencyManagement>
         <dependencies>
             <dependency>

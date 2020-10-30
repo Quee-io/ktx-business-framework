@@ -5,12 +5,19 @@
     <parent>
         <artifactId>ktx-business-port</artifactId>
         <groupId>io.quee.ktx.framework</groupId>
-        <version>1.0.9.0-RELEASE</version>
+        <version>1.0.9.1-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ktx-business-port-logger</artifactId>
 
+    <distributionManagement>
+        <relocation>
+            <artifactId>ktx-radix-port-logger</artifactId>
+            <version>v1.0.0-RELEASE</version>
+            <groupId>io.quee.ktx.radix</groupId>
+        </relocation>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -6,7 +6,7 @@
 
     <groupId>io.quee.ktx.framework</groupId>
     <artifactId>ktx-business-framework</artifactId>
-    <version>1.0.9.0-RELEASE</version>
+    <version>1.0.9.1-RELEASE</version>
     <packaging>pom</packaging>
     <modules>
         <module>ktx-business-dependencies</module>
@@ -16,6 +16,13 @@
         <module>ktx-business-starter</module>
         <module>ktx-business-tool</module>
     </modules>
+    <distributionManagement>
+        <relocation>
+            <version>v1.0.0-RELEASE</version>
+            <groupId>io.quee.ktx.radix</groupId>
+            <artifactId>ktx-radix</artifactId>
+        </relocation>
+    </distributionManagement>
     <name>Kotlin Business Framework</name>
     <description>
         Shared business abstraction modules to develop any server project
